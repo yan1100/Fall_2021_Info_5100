@@ -169,33 +169,17 @@ public class Main {
     //Time Complexity: O(n)
     //Space Complexity: O(1)
     public static boolean letterNumString(String s) {
-        boolean isLetter = false;
-        boolean isNum = false;
-
-        if (Character.isDigit(s.charAt(0))) {
-            isNum = true;
-        } else {
-            isLetter = true;
-        }
-
-        for (int i = 1; i < s.length(); i++) {
+        for (int i = 0; i < s.length() - 1; i++) {
             if (Character.isDigit(s.charAt(i))) {
-                if (isNum) {
+                if (!Character.isLetter(s.charAt(i + 1))) {
                     return false;
-                } else {
-                    isNum = true;
-                    isLetter = false;
                 }
-            } else {
-                if (isLetter) {
+            } else if (Character.isLetter(s.charAt(i))) {
+                if (!Character.isDigit(s.charAt(i + 1))) {
                     return false;
-                } else {
-                    isNum = false;
-                    isLetter = true;
                 }
             }
         }
-
         return true;
     }
 
