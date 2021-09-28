@@ -11,14 +11,14 @@ public class Main {
 	    //Question 1 Test
         System.out.println("=======================================");
         System.out.println("Question 1 Example 1: ");
-        System.out.print("Input: ");
         int[] nums1 = new int[]{1,2,3,2};
+        System.out.print("Input: ");
         printArray(nums1);
         System.out.println("Output: " + sumOfUnique(nums1));
 
         System.out.println("\nQuestion 1 Example 2: ");
-        System.out.print("Input: ");
         int[] nums2 = new int[]{1,1,1,1};
+        System.out.print("Input: ");
         printArray(nums2);
         System.out.println("Output: " + sumOfUnique(nums2));
 
