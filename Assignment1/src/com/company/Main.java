@@ -72,12 +72,12 @@ public class Main {
         System.out.println("Question 5 Example 1: ");
         String str1 = "1A3d4s5t";
         System.out.println("str = " + str1);
-        System.out.println("Output: " + letterFollowedByDigit(str1));
+        System.out.println("Output: " + letterNumString(str1));
 
         System.out.println("\nQuestion 5 Example 2: ");
         String str2 = "A2bb2d4";
         System.out.println("str = " + str2);
-        System.out.println("Output: " + letterFollowedByDigit(str2));
+        System.out.println("Output: " + letterNumString(str2));
 
 
 
@@ -168,36 +168,35 @@ public class Main {
     //Question 5
     //Time Complexity: O(n)
     //Space Complexity: O(1)
-    public static boolean letterFollowedByDigit(String str) {
-        if (Character.isLetter(str.charAt(0))){
-            return isDigit(str,1);
-        }else if (Character.isDigit(str.charAt(0))){
-            return isLetter(str,1);
-        }else {
-            return false;
-        }
-    }
+    public static boolean letterNumString(String s) {
+        boolean isLetter = false;
+        boolean isNum = false;
 
-    private static boolean isDigit(String str, int i){
-        if (Character.isDigit(str.charAt(i))){
-            if (i < str.length() - 1){
-                return isLetter(str, i + 1);
-            }else {
-                return true;
+        if (Character.isDigit(s.charAt(0))) {
+            isNum = true;
+        } else {
+            isLetter = true;
+        }
+
+        for (int i = 1; i < s.length(); i++) {
+            if (Character.isDigit(s.charAt(i))) {
+                if (isNum) {
+                    return false;
+                } else {
+                    isNum = true;
+                    isLetter = false;
+                }
+            } else {
+                if (isLetter) {
+                    return false;
+                } else {
+                    isNum = false;
+                    isLetter = true;
+                }
             }
         }
-        return false;
-    }
 
-    private static boolean isLetter(String str, int i){
-        if (Character.isLetter(str.charAt(i))){
-            if (i < str.length() - 1){
-                return isDigit(str, i + 1);
-            }else {
-                return true;
-            }
-        }
-        return false;
+        return true;
     }
 
 
